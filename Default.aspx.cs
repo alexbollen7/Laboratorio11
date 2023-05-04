@@ -20,28 +20,39 @@ namespace Laboratorio11
         protected void ButtonRegistroAlumno_Click(object sender, EventArgs e)
         {
 
-            Universidad universidadExiste = universidades.Find(u => u.NombreUniversiad == DropDownList1.SelectedValue);
-
-            if (universidadExiste == null)
+            if (universidades == null)
             {
-                Universidad universidadNueva = new Universidad();
-
-                universidadNueva.NombreUniversiad = DropDownList1.SelectedValue;
-
-                Alumno alumnoNuevo = new Alumno();
-                alumnoNuevo.Nombre = TextBoxNombreAlumno.Text;
-                alumnoNuevo.Carne = TextBoxCarne.Text;
-                alumnoNuevo.FechaNacimiento = TextBoxFechaNacimiento.Text;
-                alumnoNuevo.Direccion = TextBoxDireccion.Text;
-
-                Curso cursoNuevo = new Curso();
-                cursoNuevo.NombreCurso = TextBoxNombreCurso.Text;
-                cursoNuevo.Nota = Convert.ToInt32(TextBoxNota.Text);
-
-                alumnoNuevo.Cursos.Add(cursoNuevo);
-
-                universidadNueva.Alumnos.Add(alumnoNuevo);
+                universidades = new List<Universidad>();
             }
+            else
+            {
+                Universidad universidadExiste = universidades.Find(u => u.NombreUniversiad == DropDownList1.SelectedValue);
+
+                if (universidadExiste == null)
+                {
+                    Universidad universidadNueva = new Universidad();
+
+                    universidadNueva.NombreUniversiad = DropDownList1.SelectedValue;
+
+                    Alumno alumnoNuevo = new Alumno();
+                    alumnoNuevo.Nombre = TextBoxNombreAlumno.Text;
+                    alumnoNuevo.Carne = TextBoxCarne.Text;
+                    alumnoNuevo.FechaNacimiento = TextBoxFechaNacimiento.Text;
+                    alumnoNuevo.Direccion = TextBoxDireccion.Text;
+
+                    Curso cursoNuevo = new Curso();
+                    cursoNuevo.NombreCurso = TextBoxNombreCurso.Text;
+                    cursoNuevo.Nota = Convert.ToInt32(TextBoxNota.Text);
+
+                    alumnoNuevo.Cursos.Add(cursoNuevo);
+
+                    universidadNueva.Alumnos.Add(alumnoNuevo);
+
+                    universidades.Add(universidadNueva);
+                }
+            }
+
+            Grabar();
 
         }
 
@@ -56,7 +67,16 @@ namespace Laboratorio11
             jsonStream.Close();
 
             lista = JsonConvert.DeserializeObject<List<Universidad>>(json);
-            universidades = lista.ToList();
+            if (lista != null)
+                universidades = lista.ToList();
+        }
+
+        private void Grabar()
+        {
+            string json = JsonConvert.SerializeObject(universidades);
+            string archivo = Server.MapPath("Datos.json");
+
+            System.IO.File.WriteAllText(archivo, json);
         }
     }
 }

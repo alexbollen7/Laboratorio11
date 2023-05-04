@@ -1,0 +1,19 @@
+[
+  {
+    "NombreUniversiad": "Mesoamericana",
+    "Alumnos": [
+      {
+        "Nombre": "Alexander",
+        "Carne": "123456",
+        "FechaNacimiento": "21/08/2004",
+        "Direccion": "Quetzaltenango",
+        "Cursos": [
+          {
+            "NombreCurso": "Matematicas",
+            "Nota": 100
+          }
+        ]
+      }
+    ]
+  }
+]
