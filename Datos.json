@@ -1,4 +1,5 @@
 [
+  
   {
     "NombreUniversiad": "Mesoamericana",
     "Alumnos": [
@@ -11,6 +12,35 @@
           {
             "NombreCurso": "Matematicas",
             "Nota": 100
+          }
+        ]
+      },
+      {
+        "Nombre": "Samuel",
+        "Carne": "654123",
+        "FechaNacimiento": "21/08/2004",
+        "Direccion": "Quetzaltenango",
+        "Cursos": [
+          {
+            "NombreCurso": "Fisica",
+            "Nota": 65
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "NombreUniversiad": "Del Valle",
+    "Alumnos": [
+      {
+        "Nombre": "Aldo",
+        "Carne": "987456",
+        "FechaNacimiento": "15/06/2002",
+        "Direccion": "Guatemala",
+        "Cursos": [
+          {
+            "NombreCurso": "Procesamiento de señales",
+            "Nota": 95
           }
         ]
       }

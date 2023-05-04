@@ -50,6 +50,39 @@ namespace Laboratorio11
 
                     universidades.Add(universidadNueva);
                 }
+                else
+                {
+                    Alumno alumnoExiste = universidadExiste.Alumnos.Find(a => a.Nombre == TextBoxNombreAlumno.Text);
+
+                    if (alumnoExiste == null)
+                    {
+                        Alumno alumnoNuevo = new Alumno();
+                        alumnoNuevo.Nombre = TextBoxNombreAlumno.Text;
+                        alumnoNuevo.Carne = TextBoxCarne.Text;
+                        alumnoNuevo.FechaNacimiento = TextBoxFechaNacimiento.Text;
+                        alumnoNuevo.Direccion = TextBoxDireccion.Text;
+
+                        Curso cursoNuevo = new Curso();
+                        cursoNuevo.NombreCurso = TextBoxNombreCurso.Text;
+                        cursoNuevo.Nota = int.Parse(TextBoxNota.Text);
+
+                        alumnoNuevo.Cursos.Add(cursoNuevo);
+
+                        universidadExiste.Alumnos.Add(alumnoNuevo);
+                    }
+                    else
+                    {
+                        Curso cursoExiste = alumnoExiste.Cursos.Find(c => c.NombreCurso == TextBoxNombreCurso.Text);
+                        if (cursoExiste == null)
+                        {
+                            Curso cursoNuevo = new Curso();
+                            cursoNuevo.NombreCurso = TextBoxNombreCurso.Text;
+                            cursoNuevo.Nota = int.Parse(TextBoxNota.Text);
+
+                            alumnoExiste.Cursos.Add(cursoNuevo);
+                        }
+                    }
+                }
             }
 
             Grabar();
