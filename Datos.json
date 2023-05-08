@@ -45,5 +45,22 @@
         ]
       }
     ]
+  },
+  {
+    "NombreUniversiad": "OsoJuancho",
+    "Alumnos": [
+      {
+        "Nombre": "Aldo",
+        "Carne": "987456",
+        "FechaNacimiento": "15/06/2002",
+        "Direccion": "Guatemala",
+        "Cursos": [
+          {
+            "NombreCurso": "Procesamiento de señales",
+            "Nota": 95
+          }
+        ]
+      }
+    ]
   }
 ]
